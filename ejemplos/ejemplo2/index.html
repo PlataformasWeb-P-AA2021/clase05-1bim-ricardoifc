@@ -33,17 +33,15 @@
       $.ajax({
             // type: "POST",
             dataType: 'json',
-                url: "http://127.0.0.1:5984/base-personas/_design/vista1/_view/new-view"
+                url: "http://127.0.0.1:5984/base_persona/_design/vista1/_view/new-view"
             }).then(function(data) {
               console.log(JSON.stringify(data));
               var cadena = '';
               for(var i=0; i<data.rows.length; i++){
-                if( data.rows[i].value.nombre ) {
-                  // La propiedad existe
                   var name = data.rows[i].value.nombre; 
                   console.log(name);
                   cadena = cadena + "<tr><td>"+ name +"</td></tr>";
-                }   
+
               }
               // $('#myTable tr:last').after(cadena);
               $('#myTable tbody').append(cadena);

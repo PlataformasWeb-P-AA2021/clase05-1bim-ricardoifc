@@ -16,7 +16,10 @@
           <div id="mensajeFinal">
             <table id="myTable" class="display">
               <thead>
-                <tr><th>Nombres</th></tr>
+                <tr>
+                  <th>Nombres</th>
+                  <th>Apellidos</th>
+                </tr>
               </thead>
               <tbody>
               </tbody>
@@ -34,16 +37,17 @@
             // type: "POST",
             dataType: 'json',
                 // url: "http://127.0.0.1:5984/base-ejemplo-1/_design/primero/_view/vistados"
-                url: "http://127.0.0.1:5984/base-personas/_all_docs?include_docs=True"
+                url: "http://127.0.0.1:5984/base_persona/_all_docs?include_docs=True"
             }).then(function(data) {
               // console.log(JSON.stringify(data));
               var cadena = '';
               for(var i=0; i<data.rows.length; i++){
                 if( data.rows[i].doc.nombre ) {
                   // La propiedad existe
-                  var name = data.rows[i].doc.nombre; 
+                  var name = data.rows[i].doc.nombre;
+                  var lastName = data.rows[i].doc.apellido; 
                   console.log(name);
-                  cadena = cadena + "<tr><td>"+ name +"</td></tr>";
+                  cadena = cadena + "<tr><td>"+ name +"</td><td>"+ lastName +"</td></tr>";
                 }   
               }
               // $('#myTable tr:last').after(cadena);
